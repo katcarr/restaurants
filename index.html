@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="restaurantList">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant App</title>
+  <script src="lib/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="js/RestaurantController.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container" ng-controller="RestaurantCtrl">
+    <form ng-sumbit="addRestaurant()" role="form">
+      <div class="form-group">
+        <label for="name">Restaurant Name</label>
+        <input id="name" type="text" ng-model="restaurantName" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="local">Location</label>
+        <select ng-model="restaurantQuadrant" id="local" class="form-control">
+          <option value="se">South East</option>
+          <option value="ne">North East</option>
+          <option value="sw">South West</option>
+          <option value="nw">North West</option>
+          <option value="n">North</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="food-type">Food Type</label>
+        <input id="food-type" type="text" ng-model="restaurantType" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="price">Price Range</label>
+        <select ng-model="restaurantPrice" id="price" class="form-control">
+          <option value="very-cheap">Very cheap</option>
+          <option value="cheap">Cheap</option>
+          <option value="moderate">Moderate</option>
+          <option value="pricey">Pricey</option>
+          <option value="expensive">Expensive</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
