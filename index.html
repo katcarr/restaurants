@@ -10,76 +10,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container" ng-controller="RestaurantCtrl">
+  <div class="container" >
     <h1>Portland's Best Restaurant</h1>
-    <div class="row">
-      <div class="col-sm-12">
-      <h3>Add Restaurant</h3>
-        <form ng-submit="addRestaurant()" role="form" class="form-inline">
-          <div class="form-group">
-            <label for="name">Restaurant Name</label>
-            <input ng-model="restaurantName" class="form-control" id="name" type="text">
-          </div>
-          <div class="form-group">
-            <label for="local">Location</label>
-            <select ng-model="restaurantQuadrant" id="local" class="form-control">
-              <option value="se">South East</option>
-              <option value="ne">North East</option>
-              <option value="sw">South West</option>
-              <option value="nw">North West</option>
-              <option value="n">North</option>
-            </select>
-          </div>
-          <!-- <div class="form-group">
-            <label for="food-type">Food Type</label>
-            <input ng-model="restaurantType" class="form-control" id="food-type" type="text">
-          </div> -->
-          <div class="form-group">
-            <label for="price">Price Range</label>
-            <select ng-model="restaurantPrice" id="price" class="form-control">
-              <option value="very-cheap">Very cheap</option>
-              <option value="cheap">Cheap</option>
-              <option value="moderate">Moderate</option>
-              <option value="pricey">Pricey</option>
-              <option value="expensive">Expensive</option>
-            </select>
-          </div>
-        </div>
+    <div class="" ng-controller="checkBoxController">
+      <div ng-repeat="type in types">
+        <label for="{{type.name}}"></label>
+        <input id="{{type.name}}" type="checkbox" value="{{type.name}}"
+               ng-checked="selects.indexOf(type.name) > -1"
+               ng-click="toggleSelection(type.name)" />
+        {{type.name}}
       </div>
-          <div class="row">
-            <div class="col-md-2">
-              <input type="checkbox" name= "types" ng-model="restaurants.types.chinese"> Chinese
-            </div>
-                <div class="col-md-2">
-                  <input type="checkbox" name= "types" ng-model="restaurants.types.japanese">Japanese
-                </div>
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-2">
-                </div>
-          </div>
+    </div>
 
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-      <div class="row" >
-        <div class="col-sm-8" ng-show="restaurants.length">
-          <h3>Search</h3>
-            <form class="form-inline" role="form">
-              <div class="form-group">
-                <input ng-model="query" type="text" class="form-control" placeholder="search by name">
-              </div>
-            </form>
-        </div>
-        <div class="col-sm-4">
-            <h3 ng-show="restaurants.length && filtered.length">Restaurant List</h3>
-            <h3 ng-show="restaurants.length && !filtered.length">No Matches</h3>
-          <ul>
-            <li ng-repeat="item in filtered = (restaurants | filter:query)">
-              {{item.name}}
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div ng-repeat="name in selects" class="selected-item">
+      {{name}}
+    </div>
+
+
+
   </div>
+
+
+
 </body>
 </html>
